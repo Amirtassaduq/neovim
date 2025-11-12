@@ -44,6 +44,7 @@ require('lazy').setup({
   require 'plugins/nvim-treesitter',
   require 'plugins/toggleterm',
   require 'plugins/bufferline',
+  require 'plugins/vim-fugitive',
   -- require 'plugins.debug',
   -- require 'plugins.indent_line',
   -- require 'plugins.lint',
