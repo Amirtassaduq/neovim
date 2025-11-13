@@ -1,6 +1,19 @@
--- Normal mode
+-- Normal mode: move line up and down
 vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { noremap = true })
 vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { noremap = true })
+
+-- move line up and down while in visual mode
+vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv", { noremap = true })
+vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv", { noremap = true })
+
+-- duplicate selected up and down
+vim.keymap.set('n', '<A-S-Down>', ':t.<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-S-Up>', ':t-1<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<A-S-Down>', ":t'><CR>gv", { noremap = true, silent = true })
+vim.keymap.set('v', '<A-S-Up>', ":t'<-1<CR>gv", { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename variable/function' })
+
 -- Normal mode deletions
 vim.keymap.set('n', 'x', '"_x')
 vim.keymap.set('n', 'X', '"_X')
@@ -24,9 +37,6 @@ vim.keymap.set('n', 's', '"_s')
 vim.keymap.set('n', 'S', '"_S')
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 
--- move line up and down
-vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv", { noremap = true })
-vim.keymap.set('v', '<A-Up>', ":m '<-1<CR>gv=gv", { noremap = true })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -49,3 +59,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+-- testing line 1
+-- testing line 2
+-- testing line 3
+-- testing line 4
