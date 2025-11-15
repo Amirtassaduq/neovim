@@ -1,16 +1,18 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.g.have_nerd_font = false
 -- vim.opt.guifont = 'D2Coding ligature'
 -- vim.opt.display = 'lastline'
-vim.g.netrw_browse_split = 0
+
 vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 4
+vim.g.netrw_altv = 1
+vim.g.netrw_winsize = 15
 vim.g.netrw_keepdir = 0
-vim.g.netrw_winsize = 25
-vim.g.netrw_list_hide = '^\\.$'
-vim.g.netrw_keepdir = 1
 
 -- Tab behavior
 vim.opt.tabstop = 2 -- Visual: TAB appears as 4 spaces
@@ -26,16 +28,6 @@ vim.opt.copyindent = true -- Copy the structure of existing indentation
 -- Line wrapping
 vim.opt.wrap = false -- Don't wrap long lines
 vim.opt.breakindent = true -- Maintain indent when wrapping
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
-
--- Make line numbers default
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
-
--- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
@@ -53,7 +45,7 @@ end)
 vim.o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.o.undofile = false
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true

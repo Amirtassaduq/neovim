@@ -60,7 +60,5 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
--- testing line 1
--- testing line 2
--- testing line 3
--- testing line 4
+-- vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+-- vim.keymap.set('n', '<C-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })

@@ -43,13 +43,15 @@ require('lazy').setup({
   require 'plugins/mini-nvim',
   require 'plugins/nvim-treesitter',
   require 'plugins/toggleterm',
-  require 'plugins/bufferline',
+  -- require 'plugins/bufferline',
   require 'plugins/vim-fugitive',
+  -- require 'plugins/alpha-nvim',
   -- require 'plugins.debug',
   -- require 'plugins.indent_line',
   -- require 'plugins.lint',
   -- require 'plugins.autopairs',
   -- require 'plugins.neo-tree',
+  require 'plugins.vim-visual-multi',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
