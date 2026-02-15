@@ -38,13 +38,14 @@ require('lazy').setup({
   require 'plugins/nvim-lspconfig',
   require 'plugins/conform',
   require 'plugins/blink',
-  require 'plugins/tokyo-nights',
+  -- require 'plugins/tokyo-nights',
+  require 'plugins/ayu',
   require 'plugins/todo-comments',
   require 'plugins/mini-nvim',
   require 'plugins/nvim-treesitter',
-  require 'plugins/toggleterm',
-  -- require 'plugins/bufferline',
-  require 'plugins/vim-fugitive',
+  -- require 'plugins/toggleterm',
+  require 'plugins/bufferline', -- shows buffers as tabs
+  require 'plugins/vim-fugitive', --vim-fugitive runs git command inside vim
   -- require 'plugins/alpha-nvim',
   -- require 'plugins.debug',
   -- require 'plugins.indent_line',

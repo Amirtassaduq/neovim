@@ -62,3 +62,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 -- vim.keymap.set('n', '<C-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+-- Alternative: Single key shortcuts (easier to press)
+vim.keymap.set('n', '<leader>z0', 'zR', { desc = 'Open all folds' })
+vim.keymap.set('n', '<leader>z1', 'zM', { desc = 'Close all folds' })
+vim.keymap.set('n', '<leader>zj', 'zj', { desc = 'Next fold' })
+vim.keymap.set('n', '<leader>zk', 'zk', { desc = 'Previous fold' })

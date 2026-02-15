@@ -3,9 +3,15 @@ vim.g.maplocalleader = ' '
 
 vim.o.number = true
 vim.o.relativenumber = true
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 -- vim.opt.guifont = 'D2Coding ligature'
 -- vim.opt.display = 'lastline'
+
+vim.opt.foldnestmax = 10 -- Maximum nested folds
+vim.opt.foldminlines = 1 -- Minimum lines to fold
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel = 99
 
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
