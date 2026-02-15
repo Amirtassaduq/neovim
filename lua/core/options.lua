@@ -19,6 +19,9 @@ vim.g.netrw_browse_split = 4
 vim.g.netrw_altv = 1
 vim.g.netrw_winsize = 15
 vim.g.netrw_keepdir = 0
+-- Prevent netrw from loading on startup, but keep it available for :Ex
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Tab behavior
 vim.opt.tabstop = 2 -- Visual: TAB appears as 4 spaces

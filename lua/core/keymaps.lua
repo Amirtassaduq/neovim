@@ -55,6 +55,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 -- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
+
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
@@ -67,3 +68,60 @@ vim.keymap.set('n', '<leader>z0', 'zR', { desc = 'Open all folds' })
 vim.keymap.set('n', '<leader>z1', 'zM', { desc = 'Close all folds' })
 vim.keymap.set('n', '<leader>zj', 'zj', { desc = 'Next fold' })
 vim.keymap.set('n', '<leader>zk', 'zk', { desc = 'Previous fold' })
+
+-- Normal mode: indent/outdent line
+vim.keymap.set('n', '<Tab>', '>>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', '<<', { noremap = true, silent = true })
+
+-- Visual mode: indent/outdent selection
+vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
+
+
+-- Split Management
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split [V]ertically' })
+vim.keymap.set('n', '<leader>wh', '<C-w>s', { desc = 'Split [H]orizontally' })
+vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make splits [E]qual' })
+vim.keymap.set('n', '<leader>wx', ':close<CR>', { desc = 'Close current split' })
+
+-- Navigation (Move between splits like VS Code)
+-- This allows you to use Ctrl + hjkl to jump windows
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to bottom split' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top split' })
+
+--(mini bufremove)
+-- Close buffer without closing the split window 
+-- vim.keymap.set('n', '<leader>bk', function()
+--   local bd = require('mini.bufremove').delete
+--   if vim.bo.modified then
+--     local choice = vim.fn.confirm(('Save changes to %q?'):format(vim.fn.bufname()), '&Yes\n&No\n&Cancel')
+--     if choice == 1 then
+--       vim.cmd.w()
+--       bd(0, false)
+--     elseif choice == 2 then
+--       bd(0, true)
+--     end
+--   else
+--     bd(0, false)
+--   end
+-- end, { desc = '[X] Close Buffer (Keep Split)' })
+
+-- close buffer without closing the split (vanilla neovim way)
+vim.keymap.set('n', '<leader>bk', function()
+  local current_buf = vim.api.nvim_get_current_buf()
+  -- Try to switch to the previous buffer
+  vim.cmd('bprevious')
+  local new_buf = vim.api.nvim_get_current_buf()
+
+  -- If we are still on the same buffer (meaning it's the only one open)
+  -- create a new empty one instead
+  if current_buf == new_buf then
+    vim.cmd('enew')
+  end
+
+  -- Finally, delete the original buffer
+  vim.cmd('confirm bd ' .. current_buf)
+end, { desc = 'Close Buffer, Preserve Split' })
+

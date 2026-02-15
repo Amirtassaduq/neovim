@@ -1,43 +1,52 @@
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.hl.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+-- 1. Highlight when yanking
+autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.hl.on_yank()
   end,
 })
--- Auto save session on exit
--- vim.api.nvim_create_autocmd('VimLeave', {
---   pattern = '*',
---   command = 'mksession! ~/.nvim/Session.vim',
--- })
 
--- Auto load session on start
--- vim.api.nvim_create_autocmd('VimEnter', {
---  pattern = '*',
---  command = 'source ~/.nvim/Session.vim',
--- })
+-- Toggle Netrw on the Right
+-- vim.keymap.set('n', '<leader>e', function()
+--   -- Check if netrw is already open
+--   local netrw_buf_exists = false
+--   for _, win in ipairs(vim.api.nvim_list_wins()) do
+--     local buf = vim.api.nvim_win_get_buf(win)
+--     if vim.bo[buf].filetype == 'netrw' then
+--       vim.api.nvim_win_close(win, true)
+--       netrw_buf_exists = true
+--       break
+--     end
+--   end
+--
+--   -- If not open, launch it and force it to the right
+--   if not netrw_buf_exists then
+--     vim.cmd('Lexplore %:p:h') -- Open explorer at current file
+--     vim.cmd('wincmd L')       -- Move explorer window to the far right
+--     vim.cmd('vertical resize 35') -- Explicitly set width to 35 columns
+--   end
+-- end, { desc = '[E]xplorer on Right' })
 
-local function toggle_netrw()
-  -- Check if netrw is open in any window
+vim.keymap.set('n', '<leader>e', function()
+  local netrw_buf_exists = false
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local buf = vim.api.nvim_win_get_buf(win)
-    local buf_ft = vim.api.nvim_buf_get_option(buf, 'filetype')
-    if buf_ft == 'netrw' then
-      -- Close netrw if there are multiple windows
-      if #vim.api.nvim_list_wins() > 1 then
-        vim.api.nvim_win_close(win, true)
-      else
-        vim.cmd 'enew' -- Open new empty buffer instead of closing
-      end
-      return
+    if vim.bo[buf].filetype == 'netrw' then
+      vim.api.nvim_win_close(win, true)
+      netrw_buf_exists = true
+      break
     end
   end
 
-  -- Netrw not found, open it on the right
-  vim.cmd '30vs | Ex'
-end
-
-vim.keymap.set('n', '<leader>e', toggle_netrw, { desc = 'Toggle file explorer' })
+  if not netrw_buf_exists then
+    -- Get the actual project root (Current Working Directory)
+    local cwd = vim.fn.getcwd()
+    vim.cmd('Lexplore ' .. cwd) 
+    vim.cmd('wincmd L')
+    vim.cmd('vertical resize 35')
+  end
+end, { desc = '[E]xplorer at Project Root' })

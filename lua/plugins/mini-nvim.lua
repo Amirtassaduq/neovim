@@ -4,6 +4,7 @@ return { -- Collection of various small independent plugins/modules
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
+
     require('mini.ai').setup { n_lines = 500 }
     require('mini.surround').setup()
 
@@ -11,7 +12,6 @@ return { -- Collection of various small independent plugins/modules
     --  You could remove this setup call if you don't like it,
     --  and try some other statusline plugin
     local statusline = require 'mini.statusline'
-
     statusline.setup { use_icons = vim.g.have_nerd_font }
 
     -- Override the filename section
@@ -32,12 +32,19 @@ return { -- Collection of various small independent plugins/modules
       return '%2l:%-2v | ' .. os.date '%I:%M %P'
     end --  Check out: https://github.com/echasnovski/mini.nvim
 
-    require('mini.comment').setup()
+    require('mini.comment').setup() -- handles commenting
+
+    -- require('mini.bufremove').setup({})
+
     vim.api.nvim_set_hl(0, 'ModifiedDot', {
       fg = '#00ff00', -- Green text
       bg = 'None', -- Transparent background (inherits from statusline)
 
       bold = true,
     })
+
+
+
+
   end,
 }
