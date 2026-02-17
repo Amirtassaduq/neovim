@@ -69,13 +69,15 @@ vim.keymap.set('n', '<leader>z1', 'zM', { desc = 'Close all folds' })
 vim.keymap.set('n', '<leader>zj', 'zj', { desc = 'Next fold' })
 vim.keymap.set('n', '<leader>zk', 'zk', { desc = 'Previous fold' })
 
+-- commented out because tab key conflict with ctrl+i
 -- Normal mode: indent/outdent line
-vim.keymap.set('n', '<Tab>', '>>', { noremap = true, silent = true })
-vim.keymap.set('n', '<S-Tab>', '<<', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<Tab>', '>>', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<S-Tab>', '<<', { noremap = true, silent = true })
 
+-- commented out because tab key conflict with ctrl+i
 -- Visual mode: indent/outdent selection
-vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })
-vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
+-- vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })
+-- vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
 
 
 -- Split Management
@@ -109,7 +111,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top split' })
 -- end, { desc = '[X] Close Buffer (Keep Split)' })
 
 -- close buffer without closing the split (vanilla neovim way)
-vim.keymap.set('n', '<leader>bk', function()
+vim.keymap.set('n', '<leader>bd', function()
   local current_buf = vim.api.nvim_get_current_buf()
   -- Try to switch to the previous buffer
   vim.cmd('bprevious')

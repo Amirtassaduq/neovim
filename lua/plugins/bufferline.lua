@@ -59,11 +59,11 @@ return {
     -- Buffer navigation
     keymap('n', '<leader>bp', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
     keymap('n', '<leader>bn', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
-    keymap('n', '<S-h>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
-    keymap('n', '<S-l>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+    -- keymap('n', '<S-h>', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+    -- keymap('n', '<S-l>', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
 
     -- Buffer management
-    keymap('n', '<leader>bd', '<cmd>Bdelete<CR>', { desc = 'Delete buffer' })
+    -- keymap('n', '<leader>bd', '<cmd>Bdelete<CR>', { desc = 'Delete buffer' })
     keymap('n', '<leader>bD', '<cmd>BufferLineSortByDirectory<CR>', { desc = 'Sort by directory' })
     keymap('n', '<leader>bE', '<cmd>BufferLineSortByExtension<CR>', { desc = 'Sort by extension' })
 

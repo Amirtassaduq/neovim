@@ -40,7 +40,7 @@ require('lazy').setup({
   require 'plugins/blink',
   -- require 'plugins/tokyo-nights',
   require 'plugins/ayu',
-  require 'plugins/todo-comments',
+  -- require 'plugins/todo-comments',
   require 'plugins/mini-nvim',
   require 'plugins/nvim-treesitter',
   -- require 'plugins/toggleterm',
@@ -53,7 +53,7 @@ require('lazy').setup({
   -- require 'plugins.autopairs',
   -- require 'plugins.neo-tree',
   require 'plugins.vim-visual-multi',
-  require 'plugins.presistance',
+  -- require 'plugins.presistance',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

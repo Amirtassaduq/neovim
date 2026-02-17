@@ -31,22 +31,22 @@ autocmd('TextYankPost', {
 --   end
 -- end, { desc = '[E]xplorer on Right' })
 
-vim.keymap.set('n', '<leader>e', function()
-  local netrw_buf_exists = false
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    local buf = vim.api.nvim_win_get_buf(win)
-    if vim.bo[buf].filetype == 'netrw' then
-      vim.api.nvim_win_close(win, true)
-      netrw_buf_exists = true
-      break
-    end
-  end
-
-  if not netrw_buf_exists then
-    -- Get the actual project root (Current Working Directory)
-    local cwd = vim.fn.getcwd()
-    vim.cmd('Lexplore ' .. cwd) 
-    vim.cmd('wincmd L')
-    vim.cmd('vertical resize 35')
-  end
-end, { desc = '[E]xplorer at Project Root' })
+-- vim.keymap.set('n', '<leader>e', function()
+--   local netrw_buf_exists = false
+--   for _, win in ipairs(vim.api.nvim_list_wins()) do
+--     local buf = vim.api.nvim_win_get_buf(win)
+--     if vim.bo[buf].filetype == 'netrw' then
+--       vim.api.nvim_win_close(win, true)
+--       netrw_buf_exists = true
+--       break
+--     end
+--   end
+--
+--   if not netrw_buf_exists then
+--     -- Get the actual project root (Current Working Directory)
+--     local cwd = vim.fn.getcwd()
+--     vim.cmd('Lexplore ' .. cwd) 
+--     vim.cmd('wincmd L')
+--     vim.cmd('vertical resize 35')
+--   end
+-- end, { desc = '[E]xplorer at Project Root' })
