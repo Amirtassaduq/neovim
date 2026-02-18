@@ -10,6 +10,7 @@ return {
   config = function(_, opts)
     require('persistence').setup(opts)
   end,
+  
   keys = {
     {
       '<leader>qs',

@@ -1,3 +1,32 @@
+return {
+  'nvim-treesitter/nvim-treesitter',
+  branch = 'master',
+  build = ':TSUpdate',
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = { enable = true, disable = { 'ruby' } },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "vv",
+          node_incremental = "v",
+          node_decremental = "V",
+          scope_incremental = "<leader>v",
+        },
+      },
+      modules = {},
+      sync_install = false,
+      ignore_install= {},
+    })
+  end,
+}
+
 --
 -- return { -- Highlight, edit, and navigate code
 --   'nvim-treesitter/nvim-treesitter',
@@ -36,31 +65,4 @@
 -- }
 --
 
-return {
-  'nvim-treesitter/nvim-treesitter',
-  branch = 'master',
-  build = ':TSUpdate',
-  config = function()
-    require('nvim-treesitter.configs').setup({
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "vv",
-          node_incremental = "v",
-          node_decremental = "V",
-          scope_incremental = "<leader>v",
-        },
-      },
-      modules = {},
-      sync_install = false,
-      ignore_install= {},
-    })
-  end,
-}
+

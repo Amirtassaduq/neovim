@@ -23,6 +23,14 @@ vim.g.netrw_keepdir = 0
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
+if vim.fn.argc() > 0 then
+    local path = tostring(vim.fn.argv(0))
+    if vim.fn.isdirectory(path) == 1 then
+        vim.cmd.cd(path)
+        print("PWD: " .. vim.fn.getcwd())
+    end
+end
+
 -- Tab behavior
 vim.opt.tabstop = 2 -- Visual: TAB appears as 4 spaces
 vim.opt.shiftwidth = 2 -- Indentation: >> and << use 4 spaces

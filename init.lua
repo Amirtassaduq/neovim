@@ -50,10 +50,10 @@ require('lazy').setup({
   -- require 'plugins.debug',
   -- require 'plugins.indent_line',
   -- require 'plugins.lint',
-  -- require 'plugins.autopairs',
-  -- require 'plugins.neo-tree',
+  require 'plugins.autopairs',
+  require 'plugins.neo-tree',
   require 'plugins.vim-visual-multi',
-  -- require 'plugins.presistance',
+  require 'plugins.presistance',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
