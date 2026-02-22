@@ -161,8 +161,10 @@ return {
         text = {
           [vim.diagnostic.severity.ERROR] = '󰅚 ',
           [vim.diagnostic.severity.WARN] = '󰀪 ',
-          [vim.diagnostic.severity.INFO] = '󰋽 ',
-          [vim.diagnostic.severity.HINT] = '󰌶 ',
+          -- [vim.diagnostic.severity.INFO] = '󰋽 ',
+          [vim.diagnostic.severity.INFO] = '',
+          -- [vim.diagnostic.severity.HINT] = '󰌶 ',
+          [vim.diagnostic.severity.HINT] = '',
         },
       } or {},
       virtual_text = {
@@ -172,8 +174,8 @@ return {
           local diagnostic_message = {
             [vim.diagnostic.severity.ERROR] = diagnostic.message,
             [vim.diagnostic.severity.WARN] = diagnostic.message,
-            [vim.diagnostic.severity.INFO] = diagnostic.message,
-            [vim.diagnostic.severity.HINT] = diagnostic.message,
+            -- [vim.diagnostic.severity.INFO] = diagnostic.message,
+            -- [vim.diagnostic.severity.HINT] = diagnostic.message,
           }
           return diagnostic_message[diagnostic.severity]
         end,
@@ -206,8 +208,8 @@ return {
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
-      -- ts_ls = {},
-      --
+      ts_ls = {},
+
 
       lua_ls = {
         -- cmd = { ... },

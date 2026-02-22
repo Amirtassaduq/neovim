@@ -13,6 +13,18 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 
+-- 1. Remove the dots and the "plus" signs
+vim.opt.fillchars:append({ fold = " ", foldopen = " ", foldsep = " ", foldclose = " " })
+
+-- This makes the folded line look like a normal comment or subtle text
+vim.api.nvim_set_hl(0, "Folded", { bg = "NONE", fg = "#ffb454"}) -- Change hex to match your theme
+
+-- This removes the "--- 24 lines" clutter and just shows the line content
+vim.opt.foldtext = ""
+
+
+
+
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 4
@@ -23,13 +35,6 @@ vim.g.netrw_keepdir = 0
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
-if vim.fn.argc() > 0 then
-    local path = tostring(vim.fn.argv(0))
-    if vim.fn.isdirectory(path) == 1 then
-        vim.cmd.cd(path)
-        print("PWD: " .. vim.fn.getcwd())
-    end
-end
 
 -- Tab behavior
 vim.opt.tabstop = 2 -- Visual: TAB appears as 4 spaces
@@ -105,3 +110,12 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+
+if vim.fn.argc() > 0 then
+    local path = tostring(vim.fn.argv(0))
+    if vim.fn.isdirectory(path) == 1 then
+        vim.cmd.cd(path)
+        -- print("PWD: " .. vim.fn.getcwd())
+    end
+end

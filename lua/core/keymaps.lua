@@ -12,6 +12,16 @@ vim.keymap.set('n', '<A-S-Up>', ':t-1<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<A-S-Down>', ":t'><CR>gv", { noremap = true, silent = true })
 vim.keymap.set('v', '<A-S-Up>', ":t'<-1<CR>gv", { noremap = true, silent = true })
 
+
+-- Turbo Scroll: Move 10 lines and center the screen using Alt
+vim.keymap.set({ "n", "v" }, "<A-j>", "10jzz", { desc = "Turbo scroll down" })
+vim.keymap.set({ "n", "v" }, "<A-k>", "10kzz", { desc = "Turbo scroll up" })
+
+-- Optional: Alt + h / l to jump to start/end of line
+vim.keymap.set({ "n", "v" }, "<A-h>", "^", { desc = "Jump to start of line" })
+vim.keymap.set({ "n", "v" }, "<A-l>", "g_", { desc = "Jump to end of line" })
+
+
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename variable/function' })
 
 -- Normal mode deletions
@@ -64,10 +74,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 -- vim.keymap.set('n', '<C-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
 -- Alternative: Single key shortcuts (easier to press)
-vim.keymap.set('n', '<leader>z0', 'zR', { desc = 'Open all folds' })
-vim.keymap.set('n', '<leader>z1', 'zM', { desc = 'Close all folds' })
-vim.keymap.set('n', '<leader>zj', 'zj', { desc = 'Next fold' })
-vim.keymap.set('n', '<leader>zk', 'zk', { desc = 'Previous fold' })
+-- vim.keymap.set('n', '<leader>z0', 'zR', { desc = 'Open all folds' })
+-- vim.keymap.set('n', '<leader>z1', 'zM', { desc = 'Close all folds' })
+-- vim.keymap.set('n', '<leader>zj', 'zj', { desc = 'Next fold' })
+-- vim.keymap.set('n', '<leader>zk', 'zk', { desc = 'Previous fold' })
 
 -- commented out because tab key conflict with ctrl+i
 -- Normal mode: indent/outdent line
@@ -88,10 +98,10 @@ vim.keymap.set('n', '<leader>wx', ':close<CR>', { desc = 'Close current split' }
 
 -- Navigation (Move between splits like VS Code)
 -- This allows you to use Ctrl + hjkl to jump windows
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to bottom split' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top split' })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move focus to left split' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move focus to right split' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move focus to bottom split' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move focus to top split' })
 
 --(mini bufremove)
 -- Close buffer without closing the split window 
@@ -126,4 +136,6 @@ vim.keymap.set('n', '<leader>bd', function()
   -- Finally, delete the original buffer
   vim.cmd('confirm bd ' .. current_buf)
 end, { desc = 'Close Buffer, Preserve Split' })
+
+
 
